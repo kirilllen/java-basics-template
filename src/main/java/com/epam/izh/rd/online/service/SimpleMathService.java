@@ -99,7 +99,13 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public long calcFibonacci(int number) {
-        return -1L;
+        long[] var=new long[number+1]; //инициализируем массив в котором будем хранить числа
+        var[0]=0L;
+        var[1]=1L; //задаём два первых числа
+        for (int i=2; i<=number; i++){
+            var[i]=var[i-2]+var[i-1];
+        }
+        return var[number];
     }
 
     /**
