@@ -71,7 +71,7 @@ public class SimpleMathService implements MathService {
             }
         }
         int [] returnedArray=new int[i]; //создаём новый массив, который возвращает метод
-        if (i + 1 >= 0) System.arraycopy(evenOnly, 0, returnedArray, 0, i + 1);
+        if (i + 1 >= 0) System.arraycopy(evenOnly, 0, returnedArray, 0, i);
         return returnedArray;
     }
 
@@ -134,8 +134,7 @@ public class SimpleMathService implements MathService {
         for (int i=1; i<=number; i++){
             if (number%i==0) {divs++;}
         }
-        if (divs==2) {return true;}
-        else {return false;}
+        return divs == 2;
     }
 
     /**
@@ -145,6 +144,10 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int[] reverseArray(int[] values) {
-        return new int[]{};
+        int[] tempArray=new int[values.length];
+        for (int i=0; i<values.length; i++){
+            tempArray[values.length-i-1]=values[i];
+        }
+        return tempArray;
     }
 }
