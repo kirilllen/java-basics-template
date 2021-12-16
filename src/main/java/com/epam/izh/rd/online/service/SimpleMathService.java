@@ -1,5 +1,7 @@
 package com.epam.izh.rd.online.service;
 
+import java.util.*;
+
 public class SimpleMathService implements MathService {
 
     /**
@@ -114,7 +116,10 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int[] sort(int[] values) {
-        return new int[]{};
+        int[] valuesSorted=new int[values.length]; //инициализируем новый массив
+        System.arraycopy(values, 0, valuesSorted, 0, values.length); //копируем массивы
+        Arrays.sort(valuesSorted);
+        return valuesSorted;
     }
 
     /**
@@ -125,7 +130,12 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public boolean isPrimary(int number) {
-        return false;
+        int divs=0; //переменная количества делителей
+        for (int i=1; i<=number; i++){
+            if (number%i==0) {divs++;}
+        }
+        if (divs==2) {return true;}
+        else {return false;}
     }
 
     /**
