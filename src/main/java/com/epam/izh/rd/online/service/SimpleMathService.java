@@ -13,7 +13,9 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int compare(int value1, int value2) {
-        return -2;
+        if (value1>value2) {return 1;}
+        else if (value1<value2) {return -1;}
+        else {return 0;}
     }
 
     /**
@@ -22,7 +24,8 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int maxFrom(int value1, int value2) {
-        return -1;
+        if (value1>value2) {return value1;}
+        else {return value2;}
     }
 
     /**
@@ -31,7 +34,11 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int maxFrom(int[] values) {
-        return -1;
+        int maxValue=values[0]; //принимает, что это максимальный элемент, затем с ним будем сравнивать
+        for(int element:values){
+            if (element>maxValue) {maxValue=element;}
+        }
+        return maxValue;
     }
 
     /**
@@ -40,7 +47,11 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int sum(int[] values) {
-        return -1;
+        int sum=0; //переменная для суммирования
+       for (int element:values) {
+           sum+=element;
+       }
+       return sum;
     }
 
     /**
@@ -49,7 +60,17 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int[] getEvenDigits(int[] values) {
-        return new int[]{};
+        int i=0; //счётчик количества чётных чисел
+        int[] evenOnly=new int[values.length]; //промежуточный массив только чётных чисел
+        for (int element:values){
+            if (element%2==0) {
+               evenOnly[i]=element;
+               i++;
+            }
+        }
+        int [] returnedArray=new int[i]; //создаём новый массив, который возвращает метод
+        if (i + 1 >= 0) System.arraycopy(evenOnly, 0, returnedArray, 0, i + 1);
+        return returnedArray;
     }
 
     /**
@@ -59,7 +80,11 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public long calcFactorial(int initialVal) {
-        return -1L;
+        long factorial=1;
+        for (int i=1; i<=initialVal; i++){
+            factorial*=i;
+        }
+        return factorial;
     }
 
     /**
